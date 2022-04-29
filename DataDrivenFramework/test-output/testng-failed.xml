@@ -9,7 +9,7 @@
     <classes>
       <class name="com.w2automation.TestCases.TC01_Registration">
         <methods>
-          <include name="Registration"/>
+          <include name="Registration" invocation-numbers="0 1"/>
           <include name="InitializeBrowser"/>
           <include name="closeBrowser"/>
         </methods>
