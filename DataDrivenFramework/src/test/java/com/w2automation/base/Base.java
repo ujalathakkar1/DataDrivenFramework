@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,9 +23,10 @@ import com.w2automation.Utilities.Utility;
 
 public class Base {
 	
-	public WebDriver driver;
+	public static WebDriver driver;
 	public static Xls_Reader excel = new Xls_Reader(
 			System.getProperty("user.dir") + "\\TestData\\Data.xlsx");
+	public static Logger log=Logger.getLogger(Base.class.getName());
 	
 	@BeforeClass
 	public void InitializeBrowser() throws IOException
@@ -33,19 +35,19 @@ public class Base {
 		{
 			System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
 			driver=new ChromeDriver();
-			
+			log.info("chrome is Initianlized!!!!!!!!");
 		}
 		else if(Utility.fetchApplicationValue("Browser").equalsIgnoreCase("firefox"))
 		{
 			System.setProperty("webdriver.gecko.driver", "./Driver/geckodriver.exe");
 			driver=new FirefoxDriver();
-			
+			log.info("Firefox is Initianlized!!!!!!!!");
 		}
 		else if(Utility.fetchApplicationValue("Browser").equalsIgnoreCase("ie"))
 		{
 			System.setProperty("webdriver.ie.driver", "./Driver/IEDriverServer.exe");
 			driver=new InternetExplorerDriver();
-			
+			log.info("IE is Initianlized!!!!!!!!");
 		}
 		
 			
@@ -66,6 +68,7 @@ public class Base {
 		{
 			driver.quit();
 		}
+		log.info("Log Execution is completed!!!!!!!!");
 	}
 	
 	

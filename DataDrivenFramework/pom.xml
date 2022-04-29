@@ -74,6 +74,12 @@
 			<version>4.1.1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -86,7 +92,20 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<testFailureIgnore>false</testFailureIgnore>
+					<suiteXmlFiles>
+						<suiteXmlFile>./testng.xml</suiteXmlFile>
+									  
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
 		</plugins>
+		
 	</build>
 
 </project>
